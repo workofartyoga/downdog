@@ -1184,6 +1184,12 @@ http-signature@~1.1.0:
     jsprim "^1.2.2"
     sshpk "^1.7.0"
 
+human-readable-ids@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/human-readable-ids/-/human-readable-ids-1.0.1.tgz#0f4bb1d90c67fef810ae0b054cf92ae09e5e2d80"
+  dependencies:
+    knuth-shuffle "^1.0.0"
+
 ignore-by-default@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/ignore-by-default/-/ignore-by-default-1.0.1.tgz#48ca6d72f6c6a3af00a9ad4ae6876be3889e2b09"
@@ -1464,6 +1470,10 @@ kind-of@^3.0.2:
   resolved "https://registry.yarnpkg.com/kind-of/-/kind-of-3.2.2.tgz#31ea21a734bab9bbb0f32466d893aea51e4a3c64"
   dependencies:
     is-buffer "^1.1.5"
+
+knuth-shuffle@^1.0.0:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/knuth-shuffle/-/knuth-shuffle-1.0.1.tgz#454940ae816c14e1af6e6f09d8828818f95b5191"
 
 latest-version@^1.0.0:
   version "1.0.1"
