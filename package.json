@@ -24,9 +24,13 @@
   "homepage": "https://github.com/workofartyoga/downdog#readme",
   "dependencies": {
     "bunyan": "^1.8.10",
+    "bluebird": "^3.5.0",
     "dotenv": "^4.0.0",
     "lodash": "^4.17.4",
-    "restify": "^4.3.0"
+    "pg": "^6.2.3",
+    "restify": "^4.3.0",
+    "rxjs": "^5.1.0",
+    "sequelize": "^3.30.4"
   },
   "devDependencies": {
     "@types/dotenv": "^4.0.0",
@@ -34,6 +38,7 @@
     "@types/node": "^7.0.21",
     "@types/restify": "^4.3.2",
     "@types/sequelize": "^4.0.55",
+    "@types/bluebird":"^3.5.0",
     "del": "^2.2.2",
     "gulp": "^3.9.1",
     "gulp-jasmine": "^2.4.2",

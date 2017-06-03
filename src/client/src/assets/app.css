@@ -1,0 +1,93 @@
+.debug {
+  clear: both;
+  font-size: 14px;
+}
+
+.debug h3 {
+  margin-top: 20px;
+  margin-bottom: 5px;
+}
+
+.disable-text-selection {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.ng-dirty.ng-invalid {
+  border: 2px solid #ff2118;
+}
+
+.ng-touched.ng-invalid {
+  border: 1px solid #cccccc !important;
+}
+
+form.ng-dirty.ng-invalid {
+  border:none;
+}
+
+form.ng-touched.ng-invalid {
+  border:none !important;
+}
+
+button[disabled] {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.form-field {
+  margin-bottom: 15px;
+}
+
+form label {
+  width: 100px;
+  display: inline-block;
+  text-align: right;
+  vertical-align: top;
+  margin-right: 5px;
+}
+
+.field-error-message {
+  text-align: right;
+  padding-right: 68px;
+  font-size: 16px;
+  color: #a10000;
+}
+
+form fieldset {
+  margin-bottom: 20px;
+}
+
+form textarea {
+  width: 170px;
+}
+
+form input[type='radio'] {
+  box-shadow: none;
+  width: 20px;
+  vertical-align: bottom;
+  margin-left: 10px;
+}
+
+form button[type='submit'] {
+  float: right;
+  margin-right: 75px;
+}
+
+.lesson-button {
+  background: #1976d2;
+  color: white;
+  font-weight: bold;
+}
+
+.lesson-button[disabled] {
+  background: grey;
+  color: white;
+  cursor: not-allowed;
+}
+
+.login-form {
+  width: 350px;
+}

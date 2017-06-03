@@ -1,0 +1,15 @@
+.address-form {
+  width: 350px;
+}
+
+.address-button {
+  background: #1976d2;
+  color: white;
+  font-weight: bold;
+}
+
+.address-button[disabled] {
+  background: grey;
+  color: white;
+  cursor: not-allowed;
+}

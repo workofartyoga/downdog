@@ -3,15 +3,19 @@ import * as restify from 'restify';
 import { createServer, ServerOptions, ThrottleOptions } from 'restify';
 
 import { createLogger } from './common/create-logger';
+import { initApi } from './api/init-api';
 
 dotenv.config();
+const APP_NAME = process.env.APP_NAME || 'downdog-app';
+const PORT = process.env.npm_config_port || 3000;
+const HOST = process.env.npm_config_host || 'localhost';
 
-const options: ServerOptions = { name: process.env.APP_NAME };
+const options: ServerOptions = { name: APP_NAME };
 
 // for testing purposes
 const app = createServer(options);
 
-app.log = createLogger( process.env.APP_NAME );
+app.log = createLogger( APP_NAME );
 
 //
 // Middleware
@@ -23,20 +27,19 @@ app.use( restify.bodyParser() );
 const throttleOptions: ThrottleOptions = {
   burst: 100, ip: true,  overrides: { '192.168.1.1': { burst: 0, rate: 0 } }, rate: 50 };
 app.use( restify.throttle( throttleOptions ) );
-app.use( restify.requestLogger() );
+
+app.use( restify.requestLogger() ); // add a req.log entry
 
 //
 // Routes
 //
-// initApi( app);
+initApi( app);
 
 // Audit Logging
 app.on('after', restify.auditLogger(
-  { log: createLogger('dog-audit') } ) );
+  { log: createLogger('downdog-audit') } ) );
 
-const port = process.env.npm_config_port || 3000;
-const host = process.env.npm_config_host || 'localhost';
 
-app.listen(port, host, () => {
+app.listen(PORT, HOST, () => {
   app.log.info(`${app.name} listening on ${app.url}`);
 });

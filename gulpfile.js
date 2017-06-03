@@ -14,16 +14,16 @@ const reporters   = require( 'jasmine-reporters');
 //
 const tsProject   = ts.createProject( 'tsconfig.json' );
 const buildPath   = 'build';
-const srcPath     = 'src/**/*.ts';
 const ignorePaths = [ 'node_modules' ];
 const extensions  = 'ts json';
 const watchSrc    = 'src';
 const bunyanPath  = './node_modules/bunyan/bin/bunyan';
 const bunyanArgs  = [ '--output', 'short', '--color' ];
-const startScript = buildPath + '/server/app.js';
+const startScript = buildPath + '/app.js';
 const delScript   = [ buildPath + '/**/*' ];
+const srcPath     = 'src';
 
-gulp.task('default', ['build']);
+gulp.task('default', ['clean', 'build', 'lint']);
 
 gulp.task('lint', function(){
   return gulp.src(srcPath)
@@ -39,7 +39,7 @@ gulp.task('clean', function(){
   return del( delScript );
 });
 
-gulp.task('build', ['clean'], function() {
+gulp.task('build', function() {
   return tsProject.src()
     .pipe(tsProject())
     .pipe(sourcemaps.init({ loadMaps: true }))
@@ -47,7 +47,7 @@ gulp.task('build', ['clean'], function() {
     .pipe(gulp.dest(buildPath));
 });
 
-gulp.task('test', ['lint', 'build'], function(){
+gulp.task('test', ['build', 'lint'], function(){
   return gulp.src('src/test/test.js')
     .pipe( jasmine({
       reporter: new reporters.TerminalReporter()
@@ -55,7 +55,7 @@ gulp.task('test', ['lint', 'build'], function(){
 });
 
 
-gulp.task('dev', function() {
+gulp.task('dev', ['build', 'lint'], function() {
   var bunyan
 
   const stream = nodemon({
