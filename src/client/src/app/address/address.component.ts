@@ -15,7 +15,14 @@ export class AddressComponent implements OnInit {
   constructor( private service: AddressService ) { }
 
   ngOnInit() {
+    this.loadAddresses();
+  }
+
+  loadAddresses() {
     this.addresses$ = this.service.loadAllAddresses();
   }
 
+  onSaved() {
+    this.loadAddresses();
+  }
 }

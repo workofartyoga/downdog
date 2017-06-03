@@ -1,40 +1,49 @@
-<form class="address-form" autocomplete="off" novalidate >
+
+<form [formGroup]="paForm" class="address-form" autocomplete="off" novalidate >
   <fieldset>
     <legend>Address</legend>
-    <div class="form-field">
-      <label>Label:</label>
-      <input/>
-    </div>
-    <div class="form-field">
-      <label>Street 1:</label>
-      <input/>
-    </div>
-    <div class="form-field">
-      <label>Street 2:</label>
-      <input/>
-    </div>
-    <div class="form-field">
-      <label>PO Box:</label>
-      <input/>
-    </div>
-    <div class="form-field">
-      <label>City:</label>
-      <input/>
-    </div>
-    <div class="form-field">
-      <label>State:</label>
-      <input/>
-    </div>
-    <div class="form-field">
-      <label>Zip:</label>
-      <input/>
-    </div>
+    <md-input-container class="address-full-width">
+      <input mdInput formControlName="label" placeholder="Home / Work...">
+    </md-input-container>
+
+    <p>
+    <md-input-container class="address-full-width">
+      <textarea mdInput formControlName="street1" placeholder="Address"></textarea>
+    </md-input-container>
+    <md-input-container class="address-full-width">
+      <textarea mdInput formControlName="street2" placeholder="Address 2"></textarea>
+    </md-input-container>
+    <md-input-container class="address-full-width">
+      <input mdInput formControlName="pobox" placeholder="Po Box">
+    </md-input-container>
+    </p>
+
+    <table class="address-full-width" cellspacing="0">
+      <tr>
+        <td>
+          <md-input-container>
+            <input mdInput formControlName="city" placeholder="City">
+          </md-input-container>
+        </td>
+        <td>
+          <md-input-container>
+            <input mdInput formControlName="state" placeholder="State">
+          </md-input-container>
+        </td>
+        <td>
+          <md-input-container>
+            <input mdInput formControlName="postalCode" placeholder="Postal Code" maxlength="5" #postalCode >
+            <md-hint align="end">{{postalCode.value.length}} / 5</md-hint>
+          </md-input-container>
+        </td>
+      </tr>
+    </table>
   </fieldset>
-  <div class="form-field">
-    <button class="address-button" type="submit" >Create Address</button>
-  </div>
+  <button md-raised-button type="submit" (click)="save()" >Save</button>
 </form>
 
+
 <div class="debug">
+  <h3>Debug Address:</h3>
   {{ address | json }}
 </div>

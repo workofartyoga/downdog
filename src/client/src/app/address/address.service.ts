@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
-import { createAddresses, IPostalAddress } from '../../../../shared/postal-address';
-import { receiveApiData } from '../util/recieve-api-data';
+import { createAddress, createAddresses, IPostalAddress } from '../../../../shared/postal-address';
+import { receiveApiData, receiveApiDatum } from '../util/recieve-api-data';
 
 import 'rxjs/add/operator/map';
 
@@ -16,5 +16,11 @@ export class AddressService {
     return this.http.get('/api/address')
       .map( receiveApiData )
       .map( createAddresses );
+  }
+
+  saveAddress( address: IPostalAddress ): Observable< IPostalAddress > {
+    return this.http.post('/api/address', address)
+      .map( receiveApiDatum )
+      .map( createAddress );
   }
 }

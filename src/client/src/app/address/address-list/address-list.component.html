@@ -1,3 +1,11 @@
-<ul *ngFor="let address of addresses">
-  <li></li>
-</ul>
+<div class="address-list">
+  <md-list>
+    <h3 md-subheader>Addresses:</h3>
+    <md-list-item *ngFor="let address of addresses" (click)="select(address)" >
+      <md-icon md-list-icon>room</md-icon>
+      <h4 md-line class="capitalize">{{address.label}}</h4>
+      <p md-line > {{getAddress( address)}}</p>
+    </md-list-item>
+  </md-list>
+
+</div>
