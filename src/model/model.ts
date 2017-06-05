@@ -16,7 +16,7 @@ dotenv.config();
 
 const log = createLogger( 'downdog-db' );
 
-const dbUrl = process.env.DB_URL || 'postgres://postgres:postgres@localhost:5432/downdog-test';
+const dbUrl = process.env.DATABASE_URL || 'postgres://postgres:postgres@localhost:5432/downdog-test';
 
 const sequelize: Sequelize = new ORM(dbUrl, loggingOptions);
 
