@@ -1,6 +1,6 @@
 {
   "name": "downdog",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "sample application for yoga teachers",
   "private": true,
   "scripts": {
@@ -61,7 +61,6 @@
     "jasmine-core": "~2.5.2",
     "jasmine-reporters": "^2.2.1",
     "@types/bluebird": "^3.5.0",
-    "@angular/cli": "^1.1.0",
     "@angular/compiler-cli": "^4.0.0",
     "@types/dotenv": "^4.0.0",
     "@types/lodash": "^4.14.64",
