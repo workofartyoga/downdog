@@ -111,6 +111,7 @@ gulp.task('start', [ 'dist', 'lint' ], function(){
       ext:      extensions,
       ignore:   ignorePaths,
       watch:    [ watchSrc ],
+      tasks:    [ 'dist', 'lint' ],
       stdout:   false,
       readable: false
     })
