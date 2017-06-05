@@ -1,5 +1,5 @@
 import * as _ from 'lodash';
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { createAddress, IPostalAddress } from '../../../../../shared/postal-address';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AddressService } from '../address.service';
@@ -14,6 +14,7 @@ import { handleError } from '../../util/handle-error';
 export class AddressFormComponent implements OnInit {
 
   paForm: FormGroup;
+
   address: IPostalAddress;
 
   @Output('saved')
@@ -64,7 +65,7 @@ export class AddressFormComponent implements OnInit {
 
   }
 
-  save(){
+  add(){
     this.service.saveAddress( this.address )
       .subscribe(
         address => {

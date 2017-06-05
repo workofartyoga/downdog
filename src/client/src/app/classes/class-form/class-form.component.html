@@ -1,4 +1,4 @@
-<form [formGroup]="classForm" class="class-form" autocomplete="off" novalidate >
+<form [formGroup]="classForm" #cf="ngForm" class="class-form" autocomplete="off" novalidate >
   <fieldset>
     <legend>Enter / Edit a class</legend>
 
@@ -27,11 +27,11 @@
     </md-input-container>
 
   </fieldset>
-  <button md-raised-button color="accent" type="submit" (click)="save()" >Save</button>
-  <button md-raised-button (click)="cancel()">Cancel</button>
+  <button md-button (click)="cancel()">Cancel</button>
+  <button md-button color="accent" type="submit" (click)="save()" [disabled]="!cf.valid" >Save</button>
 </form>
 
-<div class="debug">
-<h3>Debug ClassEntry:</h3>
-{{ classEntry | json }}
-</div>
+<!--<div class="debug">-->
+<!--<h3>Debug ClassEntry:</h3>-->
+<!--{{ classEntry | json }}-->
+<!--</div>-->

@@ -33,14 +33,22 @@
 
 
 .debug {
+  margin-top: 30px;
   padding-top: 30px;
+  padding-bottom: 30px;
   clear: both;
   font-size: 14px;
+  background-color: coral;
 }
 
 .debug h3 {
   margin-top: 20px;
   margin-bottom: 5px;
+}
+
+form {
+  background-color: white;
+  padding-bottom: 20px;
 }
 
 .field-error-message {

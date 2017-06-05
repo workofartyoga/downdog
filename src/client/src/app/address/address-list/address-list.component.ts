@@ -29,7 +29,6 @@ export class AddressListComponent{
   }
 
   select( address: IPostalAddress ) {
-    console.log( address );
     this.selected = address;
     this.onSelect.emit( address );
   }
