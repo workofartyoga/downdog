@@ -1,5 +1,5 @@
-import * as ORM from 'Sequelize';
-import {Sequelize} from 'Sequelize';
+import * as ORM from 'sequelize';
+import {Sequelize} from 'sequelize';
 import { modelOptions } from './model-options';
 
 export function initAddress( sequelize: Sequelize ) {
