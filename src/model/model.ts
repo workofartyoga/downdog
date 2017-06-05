@@ -1,7 +1,7 @@
-import * as ORM from 'Sequelize';
+import * as ORM from 'sequelize';
 import * as dotenv from 'dotenv';
 import * as _ from 'lodash';
-import { Sequelize } from 'Sequelize';
+import { Sequelize } from 'sequelize';
 import { loggingOptions } from './sql-logging-options';
 import { createLogger } from '../common/create-logger';
 import { handleModelError } from './handle-model-error';
