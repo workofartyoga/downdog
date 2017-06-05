@@ -60,9 +60,6 @@
     "jasmine": "^2.6.0",
     "jasmine-core": "~2.5.2",
     "jasmine-reporters": "^2.2.1",
-    "gulp-util": "^3.0.8"
-  },
-  "devDependencies": {
     "@types/bluebird": "^3.5.0",
     "@angular/cli": "^1.1.0",
     "@angular/compiler-cli": "^4.0.0",
@@ -72,6 +69,9 @@
     "@types/node": "~6.0.60",
     "@types/restify": "^4.3.2",
     "@types/sequelize": "^4.0.55",
+    "gulp-util": "^3.0.8"
+  },
+  "devDependencies": {
     "codelyzer": "~2.0.0",
     "jasmine-spec-reporter": "~3.2.0",
     "karma": "~1.4.1",
