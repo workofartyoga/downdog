@@ -5,8 +5,8 @@
   },
   "apps": [
     {
-      "root": "src",
-      "outDir": "dist",
+      "root": "src/client/src",
+      "outDir": "dist/client",
       "assets": [
         "assets",
         "favicon.ico"
@@ -19,16 +19,16 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "dd",
       "styles": [
-        "../node_modules/font-awesome/css/font-awesome.css",
-        "../node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+        "../../../node_modules/font-awesome/css/font-awesome.css",
+        "../../../node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
         "styles.css"
       ],
       "scripts": [
-        "../node_modules/rx/dist/rx.js",
-        "../node_modules/hammerjs/hammer.js",
-        "../node_modules/@angular/animations/bundles/animations.umd.js",
-        "../node_modules/@angular/animations/bundles/animations-browser.umd.js",
-        "../node_modules/@angular/material/bundles/material.umd.js"
+        "../../../node_modules/rx/dist/rx.js",
+        "../../../node_modules/hammerjs/hammer.js",
+        "../../../node_modules/@angular/animations/bundles/animations.umd.js",
+        "../../../node_modules/@angular/animations/bundles/animations-browser.umd.js",
+        "../../../node_modules/@angular/material/bundles/material.umd.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {
@@ -39,23 +39,23 @@
   ],
   "e2e": {
     "protractor": {
-      "config": "./protractor.conf.js"
+      "config": "src/client/protractor.conf.js"
     }
   },
   "lint": [
     {
-      "project": "src/tsconfig.app.json"
+      "project": "src/client/src/tsconfig.app.json"
     },
     {
-      "project": "src/tsconfig.spec.json"
+      "project": "src/client/src/tsconfig.spec.json"
     },
     {
-      "project": "e2e/tsconfig.e2e.json"
+      "project": "src/client/e2e/tsconfig.e2e.json"
     }
   ],
   "test": {
     "karma": {
-      "config": "./karma.conf.js"
+      "config": "src/client/karma.conf.js"
     }
   },
   "defaults": {
