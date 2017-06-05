@@ -1,1 +1,0 @@
-{"version":3,"names":[],"mappings":"","sources":["api/handle-success.js"],"sourcesContent":["\"use strict\";\nObject.defineProperty(exports, \"__esModule\", { value: true });\nfunction handleSuccess(res, next, data) {\n    res.json(200, { data: data });\n    return next();\n}\nexports.handleSuccess = handleSuccess;\n"],"file":"handle-success.js"}

@@ -56,8 +56,6 @@ gulp.task('build', function() {
 gulp.task('dist', function() {
   return tsProject.src()
                   .pipe(tsProject())
-                  .pipe(sourcemaps.init({ loadMaps: true }))
-                  .pipe(sourcemaps.write('./'))
                   .pipe(gulp.dest(distPath));
 });
 
