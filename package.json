@@ -1,6 +1,6 @@
 {
   "name": "downdog",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "description": "sample application for yoga teachers",
   "private": true,
   "scripts": {
