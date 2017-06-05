@@ -26,13 +26,13 @@ export const Classes = initClasses( sequelize );
 
 People.hasMany( Addresses, { as: 'address' } );
 
-if ( !dbUrl.endsWith('-test')) {
-  sequelize.sync()
-    .then( () => {
-      log.debug( 'synced!');
-    })
-    .catch( _.partial( handleModelError, 'ERR-MODEL-SYNC') );
-} else {
+// if ( !dbUrl.endsWith('-test')) {
+//   sequelize.sync()
+//     .then( () => {
+//       log.debug( 'synced!');
+//     })
+//     .catch( _.partial( handleModelError, 'ERR-MODEL-SYNC') );
+// } else {
   log.info( 'begin db initialization');
   sequelize.sync({force: true, match: /-test$/})
     .then(() => {
@@ -49,4 +49,4 @@ if ( !dbUrl.endsWith('-test')) {
     })
     .catch( _.partial( handleModelError, 'ERR-MODEL-TEST-SYNC'));
 
-}
+// }

@@ -20,29 +20,28 @@ exports.Addresses = init_address_1.initAddress(sequelize);
 exports.People = init_person_1.initPerson(sequelize);
 exports.Classes = init_classes_1.initClasses(sequelize);
 exports.People.hasMany(exports.Addresses, { as: 'address' });
-if (!dbUrl.endsWith('-test')) {
-    sequelize.sync()
-        .then(function () {
-        log.debug('synced!');
-    })
-        .catch(_.partial(handle_model_error_1.handleModelError, 'ERR-MODEL-SYNC'));
-}
-else {
-    log.info('begin db initialization');
-    sequelize.sync({ force: true, match: /-test$/ })
-        .then(function () {
-        return test_address_1.testAddress();
-    })
-        .then(function () {
-        return test_people_1.testPeople();
-    })
-        .then(function () {
-        return test_classes_1.testClasses();
-    })
-        .then(function () {
-        log.info('complete db initialization');
-    })
-        .catch(_.partial(handle_model_error_1.handleModelError, 'ERR-MODEL-TEST-SYNC'));
-}
+// if ( !dbUrl.endsWith('-test')) {
+//   sequelize.sync()
+//     .then( () => {
+//       log.debug( 'synced!');
+//     })
+//     .catch( _.partial( handleModelError, 'ERR-MODEL-SYNC') );
+// } else {
+log.info('begin db initialization');
+sequelize.sync({ force: true, match: /-test$/ })
+    .then(function () {
+    return test_address_1.testAddress();
+})
+    .then(function () {
+    return test_people_1.testPeople();
+})
+    .then(function () {
+    return test_classes_1.testClasses();
+})
+    .then(function () {
+    log.info('complete db initialization');
+})
+    .catch(_.partial(handle_model_error_1.handleModelError, 'ERR-MODEL-TEST-SYNC'));
+// }
 
 //# sourceMappingURL=model.js.map
