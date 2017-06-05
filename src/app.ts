@@ -7,8 +7,7 @@ import { initApi } from './api/init-api';
 
 dotenv.config();
 const APP_NAME = process.env.APP_NAME || 'downdog-app';
-const PORT = process.env.npm_config_port || 3000;
-const HOST = process.env.npm_config_host || 'localhost';
+const PORT = process.env.PORT || 3000;
 
 const options: ServerOptions = { name: APP_NAME };
 
@@ -46,6 +45,6 @@ app.on('after', restify.auditLogger(
   { log: createLogger('downdog-audit') } ) );
 
 
-app.listen(PORT, HOST, () => {
+app.listen(PORT, () => {
   app.log.info(`${app.name} listening on ${app.url}`);
 });
