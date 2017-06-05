@@ -1,0 +1,19 @@
+md-card {
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-bottom: 20px;
+}
+
+md-card:first-child{
+  margin-top: 20px;
+}
+
+.subheader {
+  margin: 24px;
+  align-content: center;
+  color: rgba(0,0,0,.5);
+}
+
+.menu-button {
+  float: right;
+}

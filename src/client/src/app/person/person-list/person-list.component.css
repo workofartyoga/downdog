@@ -1,0 +1,21 @@
+.remove {
+  color: red;
+}
+
+.center {
+  align-content: center;
+  text-align: justify;
+}
+
+.list-button {
+  float: right;
+  opacity: 0.6;
+}
+
+.menu-button {
+  float: right;
+}
+
+md-card {
+  margin: 10px;
+}

@@ -1,7 +1,7 @@
 import * as _ from 'lodash';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { createAddress, IPostalAddress } from '../../../../../shared/postal-address';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AddressService } from '../address.service';
 import { handleError } from '../../util/handle-error';
 
@@ -44,6 +44,10 @@ export class AddressFormComponent implements OnInit {
         address => this.address = address
       );
 
+  }
+
+  formValid(){
+    return this.paForm.valid;
   }
 
   resetAddress() {

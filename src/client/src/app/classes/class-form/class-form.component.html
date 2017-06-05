@@ -1,0 +1,37 @@
+<form [formGroup]="classForm" class="class-form" autocomplete="off" novalidate >
+  <fieldset>
+    <legend>Enter / Edit a class</legend>
+
+    <md-input-container class="classes-full-width">
+      <input mdInput formControlName="title" placeholder="Title">
+    </md-input-container>
+
+    <md-input-container class="classes-full-width">
+      <input mdInput formControlName="audience" placeholder="Target audience">
+    </md-input-container>
+
+    <md-input-container class="classes-full-width">
+      <textarea mdInput formControlName="summary" placeholder="Summary"></textarea>
+    </md-input-container>
+
+    <md-input-container class="classes-full-width">
+      <textarea mdInput formControlName="description" placeholder="Description" rows="5"></textarea>
+    </md-input-container>
+
+    <md-input-container class="classes-full-width">
+      <input mdInput formControlName="duration" placeholder="Duration (minutes)">
+    </md-input-container>
+
+    <md-input-container class="classes-full-width">
+      <input mdInput type="" formControlName="tags" placeholder="Tags ( yoga, asana, yin...)">
+    </md-input-container>
+
+  </fieldset>
+  <button md-raised-button color="accent" type="submit" (click)="save()" >Save</button>
+  <button md-raised-button (click)="cancel()">Cancel</button>
+</form>
+
+<div class="debug">
+<h3>Debug ClassEntry:</h3>
+{{ classEntry | json }}
+</div>

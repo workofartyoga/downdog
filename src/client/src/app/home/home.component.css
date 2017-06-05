@@ -1,0 +1,12 @@
+.class-list {
+  margin-bottom: 30px;
+}
+
+.class-list:first-child {
+  margin-top: 30px;
+}
+
+md-card {
+  max-width: 400px;
+  margin: 10px;
+}

@@ -1,0 +1,51 @@
+<form [formGroup]="personForm" class="person-form" autocomplete="off" novalidate >
+  <fieldset>
+    <legend>Enter/Edit</legend>
+    <table class="person-full-width" cellspacing="0">
+      <tr>
+        <td>
+          <md-input-container class="person-full-width">
+            <input mdInput formControlName="firstName" placeholder="First" >
+          </md-input-container>
+        </td>
+        <td>
+          <md-input-container class="person-full-width">
+            <input mdInput formControlName="lastName" placeholder="Last" >
+          </md-input-container>
+        </td>
+      </tr>
+    </table>
+
+    <md-input-container class="person-full-width">
+      <input mdInput formControlName="alias" placeholder="Alias">
+    </md-input-container>
+
+    <md-input-container class="person-full-width">
+      <input mdInput formControlName="email" placeholder="Email">
+    </md-input-container>
+
+    <md-input-container class="person-full-width">
+      <textarea mdInput formControlName="bio" placeholder="Bio" rows="5"></textarea>
+    </md-input-container>
+
+    <md-input-container class="person-full-width">
+      <input mdInput formControlName="phone" placeholder="Phone">
+    </md-input-container>
+
+    <md-input-container class="person-full-width">
+      <input mdInput type="" formControlName="website" placeholder="Website">
+    </md-input-container>
+
+    <md-input-container class="person-full-width">
+      <input mdInput type="" formControlName="imageUrl" placeholder="Image Url">
+    </md-input-container>
+
+  </fieldset>
+  <button md-raised-button color="accent" type="submit" (click)="save()" >Save</button>
+  <button md-raised-button (click)="cancel()">Cancel</button>
+</form>
+
+<div class="debug">
+  <h3>Debug Person:</h3>
+  {{ person | json }}
+</div>

@@ -1,5 +1,20 @@
-<h1>
-  {{title}}
-</h1>
-<dd-address></dd-address>
-<router-outlet></router-outlet>
+
+<md-toolbar color="primary">
+  <span routerLink="">&nbsp;<md-icon>spa</md-icon>&nbsp;{{title}}</span>
+  <span class="fill-remaining-space"></span>
+  <button md-button>Login</button>
+</md-toolbar>
+
+<md-sidenav-container>
+  <md-sidenav mode="side" opened="true">
+    <button md-button routerLink="home"><md-icon>home</md-icon>&nbsp;Home</button>
+    <button md-button routerLink="classes"><md-icon>accessibility</md-icon>&nbsp;Classes</button>
+    <button md-button routerLink="schedule"><md-icon>event</md-icon>&nbsp;Schedule</button>
+    <button md-button routerLink="person"><md-icon>person</md-icon>&nbsp;Teachers</button>
+
+  </md-sidenav>
+  <div class="my-content">
+    <router-outlet></router-outlet>
+  </div>
+</md-sidenav-container>
+

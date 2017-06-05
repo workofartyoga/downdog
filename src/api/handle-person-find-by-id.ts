@@ -2,11 +2,11 @@
 import * as _ from 'lodash';
 import { Request, Response, Next } from 'restify';
 import { handleSuccess } from './handle-success';
-import { queryAddressFindAll } from '../query/query-address-find-all';
 import { handleError } from './handle-error';
+import { queryPersonFindById } from '../query/query-person-find-by-id';
 
-export function handleFindAllAddress( req: Request, res: Response, next: Next ) {
-  queryAddressFindAll()
+export function handlePersonFindById( req: Request, res: Response, next: Next ) {
+  queryPersonFindById( req.params.id )
     .then(  _.partial( handleSuccess, res, next ))
-    .catch( err => handleError( req, res, next, 'ERR-001A', 'Could not retrieve addresses', err) );
+    .catch( err => handleError( req, res, next, 'ERR-012', 'Could not find person', err) );
 }

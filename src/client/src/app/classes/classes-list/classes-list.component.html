@@ -1,0 +1,20 @@
+<h3 class="subheader">Class List
+  <button class="menu-button" md-icon-button (click)="loadClasses()"><md-icon>loop</md-icon></button>
+  <button class="menu-button" md-icon-button routerLink="/classes/create"><md-icon>add</md-icon></button>
+</h3>
+
+<md-card *ngFor="let c of classes$ | async" >
+  <md-card-title>
+    <md-icon>accessibility</md-icon>&nbsp;{{c.title}}
+  </md-card-title>
+  <md-card-subtitle>{{c.audience}}</md-card-subtitle>
+  <md-card-content>
+    <p>{{c.summary}}</p>
+    <p>{{c.description}}</p>
+    <p>{{c.tags}}</p>
+  </md-card-content>
+
+  <md-card-actions>
+    <button md-button (click)="openClass(c)"><md-icon>edit</md-icon></button>
+  </md-card-actions>
+</md-card>
