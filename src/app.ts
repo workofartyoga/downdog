@@ -1,5 +1,6 @@
 import * as dotenv from 'dotenv';
 import * as restify from 'restify';
+import * as path from 'path';
 import { createServer, ServerOptions, ThrottleOptions } from 'restify';
 
 import { createLogger } from './common/create-logger';
@@ -30,7 +31,7 @@ app.use( restify.throttle( throttleOptions ) );
 app.use( restify.requestLogger() ); // add a req.log entry
 
 app.get( /\/?.*/, restify.serveStatic({
-  directory:'./dist/client/',
+  directory: path.join( __dirname, 'client'),
   default: 'index.html'
 }));
 
