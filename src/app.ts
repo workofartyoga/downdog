@@ -30,6 +30,12 @@ app.use( restify.throttle( throttleOptions ) );
 
 app.use( restify.requestLogger() ); // add a req.log entry
 
+app.get( /\/?.*/, restify.serveStatic({
+  directory:'./dist/client/',
+  default: 'index.html'
+}));
+
+
 //
 // Routes
 //

@@ -18,9 +18,9 @@ NOTE: there is a yarn.lock file - that should ensure the correct versions.
 Using '-test' will load the database will some simple test data for the rest api.
 `DATABASE_URL=postgres://postgres:postgres@localhost:5432/database-test`
 
-`npm start` - launch the ng app
+`npm run build` - will prepare the distribution build
 
-`npm run start:server` - launch the restify api
+`npm start` - launch the app
 
 ## Browser
 I tested on Safari, Chrome and Canary on darwin x64 os

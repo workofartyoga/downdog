@@ -9,8 +9,8 @@
   },
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --proxy-config src/client/proxy.conf.json",
-    "build": "ng build",
+    "start": "gulp start",
+    "build": "ng build && gulp dist",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",

@@ -18,6 +18,7 @@ import { handlePersonUpdate } from './handle-person-update';
 
 export function initApi( app: Server ) {
 
+
   const api_address = '/api/address';
   app.post( api_address, handleAddressCreate );
   app.get( api_address, handleAddressFindAll );

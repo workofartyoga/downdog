@@ -12,14 +12,16 @@ const reporters   = require( 'jasmine-reporters');
 //
 // Gulp Variables
 //
-const tsProject   = ts.createProject( 'tsconfig.json' );
+const tsProject   = ts.createProject( 'src/tsconfig.json' );
 const buildPath   = 'build';
+const distPath    = 'dist';
 const ignorePaths = [ 'node_modules' ];
 const extensions  = 'ts json';
 const watchSrc    = 'src';
 const bunyanPath  = './node_modules/bunyan/bin/bunyan';
 const bunyanArgs  = [ '--output', 'short', '--color' ];
 const startScript = buildPath + '/app.js';
+const distScript  = distPath + '/app.js';
 const delScript   = [ buildPath + '/**/*' ];
 const srcPath     = 'src';
 
@@ -35,8 +37,12 @@ gulp.task('lint', function(){
     });
 });
 
-gulp.task('clean', function(){
+gulp.task('clean-build', function(){
   return del( delScript );
+});
+
+gulp.task('clean-dist', function(){
+  return del( 'dist/**/*' );
 });
 
 gulp.task('build', function() {
@@ -45,6 +51,14 @@ gulp.task('build', function() {
     .pipe(sourcemaps.init({ loadMaps: true }))
     .pipe(sourcemaps.write('./'))
     .pipe(gulp.dest(buildPath));
+});
+
+gulp.task('dist', function() {
+  return tsProject.src()
+                  .pipe(tsProject())
+                  .pipe(sourcemaps.init({ loadMaps: true }))
+                  .pipe(sourcemaps.write('./'))
+                  .pipe(gulp.dest(distPath));
 });
 
 gulp.task('test', ['build', 'lint'], function(){
@@ -89,11 +103,11 @@ gulp.task('dev', ['build', 'lint'], function() {
     })
 });
 
-gulp.task('start', [ 'build', 'lint' ], function(){
+gulp.task('start', [ 'dist', 'lint' ], function(){
   var bunyan
 
   const stream = nodemon({
-      script:   startScript,
+      script:   distScript,
       ext:      extensions,
       ignore:   ignorePaths,
       watch:    [ watchSrc ],
