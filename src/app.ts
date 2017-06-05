@@ -30,16 +30,21 @@ app.use( restify.throttle( throttleOptions ) );
 
 app.use( restify.requestLogger() ); // add a req.log entry
 
-app.get( /\/?.*/, restify.serveStatic({
-  directory: path.join( __dirname, 'client'),
-  default: 'index.html'
-}));
-
 
 //
 // Routes
 //
 initApi( app);
+
+//
+// order of preference
+// hit the /api routes first
+//
+app.get( /\/?.*/, restify.serveStatic({
+  directory: path.join( __dirname, 'client'),
+  default: 'index.html'
+}));
+
 
 // Audit Logging
 app.on('after', restify.auditLogger(

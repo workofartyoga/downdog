@@ -34,7 +34,8 @@ People.hasMany( Addresses, { as: 'address' } );
 //     .catch( _.partial( handleModelError, 'ERR-MODEL-SYNC') );
 // } else {
   log.info( 'begin db initialization');
-  sequelize.sync({force: true, match: /-test$/})
+  // sequelize.sync({force: true, match: /-test})
+  sequelize.sync({force: true})
     .then(() => {
       return testAddress();
     })
