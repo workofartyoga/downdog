@@ -103,7 +103,7 @@ gulp.task('dev', ['build', 'lint'], function() {
     })
 });
 
-gulp.task('start', [ 'dist', 'lint' ], function(){
+gulp.task('start', [ 'dist', 'lint'], function(){
   var bunyan
 
   const stream = nodemon({
