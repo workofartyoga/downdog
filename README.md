@@ -15,10 +15,7 @@ NOTE: there is a yarn.lock file - that should ensure the correct versions.
 
 ## Running
 
-Using '-test' will load the database will some simple test data for the rest api.
 `DATABASE_URL=postgres://postgres:postgres@localhost:5432/database-test`
-
-`npm run build` - will prepare the distribution build
 
 `npm start` - launch the app
 
