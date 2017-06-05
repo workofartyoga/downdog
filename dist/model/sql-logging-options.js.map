@@ -1,0 +1,1 @@
+{"version":3,"names":[],"mappings":"","sources":["model/sql-logging-options.js"],"sourcesContent":["\"use strict\";\nObject.defineProperty(exports, \"__esModule\", { value: true });\nexports.loggingOptions = { benchmark: true, logging: console.log };\n// export const loggingOptions: LoggingOptions = {logging: false};\n"],"file":"sql-logging-options.js"}
