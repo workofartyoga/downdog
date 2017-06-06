@@ -1,18 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'dd-classes',
   templateUrl: './classes.component.html',
   styleUrls: ['./classes.component.css']
 })
-export class ClassesComponent implements OnInit {
+export class ClassesComponent {
 
   constructor() { }
-
-  ngOnInit() {
-  }
-
-  openClassList(){
-
-  }
 }

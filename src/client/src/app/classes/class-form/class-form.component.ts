@@ -43,8 +43,6 @@ export class ClassFormComponent implements OnInit {
       {
         description: [this.classEntry.description, [Validators.required]],
         duration: [this.classEntry.duration, [Validators.required, Validators.pattern('[0-9]+')]],
-        // icon: [this.classEntry.icon],
-        // imageUrl: [this.classEntry.imageUrl],
         audience: [this.classEntry.audience, [Validators.required]],
         summary: [this.classEntry.summary, [Validators.required, Validators.maxLength(400)]],
         title: [this.classEntry.title, [Validators.required]],
@@ -70,8 +68,6 @@ export class ClassFormComponent implements OnInit {
       id: id,
       description: '',
       duration: 0,
-      // icon: '',
-      // imageUrl: '',
       audience: '',
       summary: '',
       tags: '',
@@ -119,9 +115,6 @@ export class ClassFormComponent implements OnInit {
 
 }
 
-// function toFormValue( { description, duration, icon, imageUrl, audience, summary, tags, title }: any ) {
-//   return { description, duration, icon, imageUrl, audience, summary, tags, title };
-// }
 function toFormValue( { description, duration, audience, summary, tags, title }: any ) {
   return { description, duration, audience, summary, tags, title };
 }

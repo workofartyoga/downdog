@@ -38,6 +38,7 @@ export class AddressFormComponent implements OnInit {
         postalCode:[this.address.postalCode, [Validators.minLength(5), Validators.pattern('[0-9]+')]]
       }
     );
+
     this.paForm.valueChanges
       .filter( () => this.paForm.valid ) // only want to see changes on valid values
       .map( createAddress )             // transform the formValue into an address

@@ -5,6 +5,7 @@ import { createServer, ServerOptions, ThrottleOptions } from 'restify';
 
 import { createLogger } from './common/create-logger';
 import { initApi } from './api/init-api';
+import { initStaticFiles } from './init-static-files';
 
 dotenv.config();
 const APP_NAME = process.env.APP_NAME || 'downdog-app';
@@ -39,11 +40,7 @@ initApi( app);
 //
 // order of preference
 // hit the /api routes first
-//
-app.get( /\/?.*/, restify.serveStatic({
-  directory: path.join( __dirname, 'client'),
-  default: 'index.html'
-}));
+initStaticFiles( app );
 
 
 // Audit Logging
