@@ -26,6 +26,7 @@ import { ClassesListComponent } from './classes/classes-list/classes-list.compon
 import { ClassFormComponent } from './classes/class-form/class-form.component';
 import { PersonDetailComponent } from './person/person-detail/person-detail.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -57,4 +58,6 @@ import { PersonDetailComponent } from './person/person-detail/person-detail.comp
   providers: [ AddressService, PersonService, ClassesService ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
+

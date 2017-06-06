@@ -3,18 +3,12 @@ import * as restify from 'restify';
 import { Server } from 'restify';
 import * as path from 'path';
 
-// I want to have only client/assets and the client/{angular files} opened
-//
-// app.get( /\/?.*/, restify.serveStatic({
-//   directory: path.join( __dirname, 'client'),
-//   default: 'index.html'
-// }));
 
 export function initStaticFiles(app: Server) {
 
   // anything under assets
   app.get(/\/assets\/?.*/, restify.serveStatic( {
-    directory: path.join( __dirname, 'client/assets' )
+    directory: path.join( __dirname, 'client' )
   } ) );
 
   // give up index.html, inline.bundle.js, main.bundle.js, polyfills.bundle.js
@@ -29,6 +23,10 @@ export function initStaticFiles(app: Server) {
   }));
 
   app.get( /\/*.bundle.js/, restify.serveStatic( {
+    directory: path.join( __dirname, 'client' )
+  }));
+
+  app.get( /\/*.bundle.css/, restify.serveStatic( {
     directory: path.join( __dirname, 'client' )
   }));
 }

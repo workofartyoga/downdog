@@ -11,7 +11,7 @@ import { IPostalAddress } from '../../../../shared/postal-address';
 export class AddressComponent implements OnInit {
 
   addresses$: Observable<IPostalAddress[]>;
-
+  selected: IPostalAddress;
   constructor( private service: AddressService ) { }
 
   ngOnInit() {
