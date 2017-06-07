@@ -1,6 +1,6 @@
 import * as _ from 'lodash';
 import { Component, OnInit } from '@angular/core';
-import { createPerson, IPerson } from '../../../../../shared/person';
+import { createNewPerson, createPerson, IPerson } from '../../../../../shared/person';
 import { PersonService } from '../person.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { handleError } from '../../util/handle-error';
@@ -62,7 +62,6 @@ export class PersonFormComponent implements OnInit {
             this.personForm.setValue( formValues(this.person) )
           },
           _.partial( handleError, 'ERR-051')
-
         );
     }
   }
@@ -77,7 +76,7 @@ export class PersonFormComponent implements OnInit {
       lastName: [ this.person.lastName, [ Validators.required ]  ],
       phone: [ this.person.phone ],
       website: [ this.person.website ]
-    })
+    });
 
     this.personForm.valueChanges
       .filter( () => this.personForm.valid ) // only want to see changes on valid values
@@ -96,7 +95,7 @@ export class PersonFormComponent implements OnInit {
   }
   save(){
     if( this.personId === -1 ){
-      this._service.personCreate( this.person )
+      this._service.personCreate( createNewPerson( this.person ) )
         .subscribe(
           person => this.goBack(),
           _.partial( handleError, 'ERR-053' )

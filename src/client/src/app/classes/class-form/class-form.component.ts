@@ -1,7 +1,7 @@
 import * as _ from 'lodash';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { createClass, IClass } from '../../../../../shared/classes';
+import { createClass, createNewClass, IClass } from '../../../../../shared/classes';
 import { ClassesService } from '../classes.service';
 import { handleError } from '../../util/handle-error';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -104,7 +104,7 @@ export class ClassFormComponent implements OnInit {
           _.partial(handleError, 'ERR-CLS-302')
         );
     }else{
-      this.service.createClass( this.classEntry )
+      this.service.createClass( createNewClass( this.classEntry ) )
         .subscribe(
           classEntry => {
             this.goBack();

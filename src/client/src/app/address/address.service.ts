@@ -31,7 +31,7 @@ export class AddressService {
   }
 
   updateAddress( id: number, address: IPostalAddress ): Observable< IPostalAddress > {
-    return this.http.put(`/api/address/${id}`, address)
+    return this.http.patch(`/api/address/${id}`, address)
       .map( receiveApiDatum )
       .map( createAddress );
   }

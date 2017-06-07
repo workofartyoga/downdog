@@ -10,6 +10,9 @@ export interface IClass {
   title: string;
 }
 
+export function createNewClass( {id, description, duration, icon, imageUrl, audience, summary, tags, title}: any ): any {
+  return { description, duration, icon, imageUrl, audience, summary, tags, title }
+}
 export function createClass( {id, description, duration, icon, imageUrl, audience, summary, tags, title}: any ): IClass {
   return { id, description, duration, icon, imageUrl, audience, summary, tags, title }
 }

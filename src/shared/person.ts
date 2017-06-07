@@ -12,6 +12,12 @@ export interface IPerson {
   website: string;
 }
 
+export function createNewPerson( { id, alias, bio, email, firstName, imageUrl, lastName,
+                                phone, website }: any): any {
+  return { alias, bio, email, firstName, imageUrl, lastName,
+    phone, website };
+}
+
 export function createPerson( { id, alias, bio, email, firstName, imageUrl, lastName,
                                 phone, website }: any): IPerson {
   return { id, alias, bio, email, firstName, imageUrl, lastName,

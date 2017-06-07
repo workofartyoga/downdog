@@ -10,6 +10,11 @@ export interface IPostalAddress {
   street2?: string;
 }
 
+export function createNewAddress( { id, city, label, pobox, postalCode, state, street1, street2}: any )
+: any {
+  return { city, label, pobox, postalCode, state, street1, street2};
+}
+
 export function createAddress( { id, city, label, pobox, postalCode, state, street1, street2}: any )
 : IPostalAddress {
   return { id, city, label, pobox, postalCode, state, street1, street2};

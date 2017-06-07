@@ -10,25 +10,25 @@ export class ClassesService {
   constructor( private http: Http) { }
 
   loadAllClasses() {
-    return this.http.get('/api/class')
+    return this.http.get('/api/classes')
       .map( receiveApiData )
       .map( createClasses );
   }
 
   createClass( classEntry: IClass ){
-    return this.http.post( '/api/class', classEntry)
+    return this.http.post( '/api/classes', classEntry)
       .map( receiveApiDatum )
       .map( createClass);
   }
 
   saveClass( id: number, classEntry: IClass ){
-    return this.http.patch(`/api/class/${id}`, classEntry )
+    return this.http.patch(`/api/classes/${id}`, classEntry )
       .map( receiveApiDatum )
       .map( createClass );
   }
 
   findClassById( id: number) {
-    return this.http.get(`/api/class/${id}`)
+    return this.http.get(`/api/classes/${id}`)
       .map( receiveApiDatum )
       .map( createClass );
   }

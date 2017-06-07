@@ -1,6 +1,6 @@
 import * as _ from 'lodash';
 import { Component, OnInit} from '@angular/core';
-import { createAddress, IPostalAddress } from '../../../../../shared/postal-address';
+import { createAddress, createNewAddress, IPostalAddress } from '../../../../../shared/postal-address';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AddressService } from '../address.service';
 import { handleError } from '../../util/handle-error';
@@ -90,7 +90,7 @@ export class AddressFormComponent implements OnInit {
   }
   save(){
     if( this.address.id === -1 ) {
-      this._service.saveAddress(this.address)
+      this._service.saveAddress( createNewAddress(this.address) )
         .subscribe(
           address => {
             this.goBack();

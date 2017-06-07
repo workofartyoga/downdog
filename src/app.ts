@@ -1,53 +1,55 @@
 import * as dotenv from 'dotenv';
-import * as restify from 'restify';
+import * as express from 'express';
+import * as bunyan from 'express-bunyan-logger';
+import * as bodyParser from 'body-parser';
 import * as path from 'path';
-import { createServer, ServerOptions, ThrottleOptions } from 'restify';
 
-import { createLogger } from './common/create-logger';
-import { initApi } from './api/init-api';
-import { initStaticFiles } from './init-static-files';
+import { Application } from 'express';
+import { routeApi } from './api/route-api';
+import { handleRestError } from './handle-rest-error';
 
 dotenv.config();
-const APP_NAME = process.env.APP_NAME || 'downdog-app';
-const PORT = process.env.PORT || 3000;
 
-const options: ServerOptions = { name: APP_NAME };
+const app: Application = express();
+const port = process.env.PORT || 3000;
 
-// for testing purposes
-const app = createServer(options);
+// Setup Middleware
+app.use( bodyParser.json() );
+app.use( bunyan() );
+app.use('/api', routeApi() );
 
-app.log = createLogger( APP_NAME );
+app.use( handleRestError );
 
-//
-// Middleware
-//
-app.use( restify.acceptParser( ['application/json'] )); // only accept json requests
-app.use( restify.gzipResponse() );
-app.use( restify.bodyParser() );
+app.use( '/', express.static( path.join( __dirname, 'client') ) );
 
-const throttleOptions: ThrottleOptions = {
-  burst: 100, ip: true,  overrides: { '192.168.1.1': { burst: 0, rate: 0 } }, rate: 50 };
-app.use( restify.throttle( throttleOptions ) );
+app.listen( port, () => {
+  console.log( `server running on port: ${port}`);
+} );
 
-app.use( restify.requestLogger() ); // add a req.log entry
-
-
-//
-// Routes
-//
-initApi( app);
-
-//
-// order of preference
-// hit the /api routes first
-initStaticFiles( app );
-
-
-// Audit Logging
-app.on('after', restify.auditLogger(
-  { log: createLogger('downdog-audit') } ) );
-
-
-app.listen(PORT, () => {
-  app.log.info(`${app.name} listening on ${app.url}`);
+process.on( 'warning', (warning: any) => {
+  console.warn( `Warning issued NAME: [${warning.name}], MESSAGE: [${warning.message}], STACK: [${warning.stack}]` );
 });
+
+process.on( 'unhandledRejection', ( reason: any, p: any ) => {
+  console.error( `Unhandled Rejection at: ${p} for reason: ${reason}`);
+});
+
+process.on( 'uncaughtException',  ( err:any ) => {
+  const errObj = JSON.parse( JSON.stringify( err, ['stack', 'message', 'inner']) );
+  console.error( "Uncaught Exception handled: ", errObj );
+});
+
+// test the uncaughtException handler
+// nonExistantFunction();
+
+// test the Unhandled Rejection handler
+// function SomeRejectResource() {
+//   this.loaded = Promise.reject( new Error("Resource not yet loaded"));
+// }
+// const resource = new SomeRejectResource();
+
+// test the warning handler
+// events.defaultMaxListeners = 1;
+// process.on('foo', () => {} );
+// process.on( 'foo', () => {} );
+// process.emitWarning( "This API is deprecated", "DeprecationWarning");
