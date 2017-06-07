@@ -23,4 +23,16 @@ export class AddressService {
       .map( receiveApiDatum )
       .map( createAddress );
   }
+
+  findById( id: number ): Observable<IPostalAddress> {
+    return this.http.get(`/api/address/${id}`)
+      .map( receiveApiDatum )
+      .map( createAddress );
+  }
+
+  updateAddress( id: number, address: IPostalAddress ): Observable< IPostalAddress > {
+    return this.http.put(`/api/address/${id}`, address)
+      .map( receiveApiDatum )
+      .map( createAddress );
+  }
 }

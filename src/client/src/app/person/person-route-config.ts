@@ -16,10 +16,6 @@ export const personRouteConfig: Routes = [
         component: PersonDetailComponent
       },
       {
-        path: 'list',
-        component: PersonListComponent
-      },
-      {
         path: 'create',
         component: PersonFormComponent
       },

@@ -1,12 +1,13 @@
+/* Material.io */
 /* You can add global styles to this file, and also import other style files */
-.container {
-  padding: 0px 50px;
-}
 
 .mdc-typography {
-  /*font-family: Monaco, "Lucida Console", sans-serif;*/
   font-family: Roboto, "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
+}
+
+md-card {
+  margin-bottom: 20px;
 }
 
 .md-icon {
@@ -23,14 +24,25 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
-.banner {
-  margin-bottom: 30px;
-  text-align: center;
-  padding: 20px 20px;
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+.capitalize {
+  text-transform: capitalize;
 }
 
+.full-width {
+  width: 100%;
+}
+
+.three-quarter-width {
+  width: 70%;
+}
+
+.one-half-width {
+  width: 45%;
+}
+
+.one-quarter-width {
+  width: 20%;
+}
 
 .debug {
   margin-top: 30px;
@@ -38,7 +50,7 @@
   padding-bottom: 30px;
   clear: both;
   font-size: 14px;
-  background-color: coral;
+  color: warn;
 }
 
 .debug h3 {
@@ -46,17 +58,6 @@
   margin-bottom: 5px;
 }
 
-form {
-  background-color: white;
-  padding-bottom: 20px;
-}
-
-.field-error-message {
-  text-align: right;
-  padding-right: 68px;
-  font-size: 16px;
-  color: #a10000;
-}
 
 .disable-text-selection {
   -webkit-touch-callout: none;
@@ -66,18 +67,3 @@ form {
   user-select: none;
 }
 
-/*.ng-dirty.ng-invalid {*/
-  /*border: 2px solid #ff2118;*/
-/*}*/
-
-/*.ng-touched.ng-invalid {*/
-  /*border: 1px solid #cccccc !important;*/
-/*}*/
-
-form.ng-dirty.ng-invalid {
-  border:none;
-}
-
-form.ng-touched.ng-invalid {
-  border:none !important;
-}

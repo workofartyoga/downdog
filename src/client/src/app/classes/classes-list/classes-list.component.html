@@ -1,9 +1,8 @@
-<h3 class="subheader">Class List
-  <button class="menu-button" md-button color="accent" (click)="loadClasses()">REFRESH</button>
-  <button class="menu-button" md-button color="accent" routerLink="/classes/create">CREATE</button>
+<h3 class="subheader">Yoga Class List&nbsp;
+  <button md-button color="accent" (click)="create()" >CREATE</button>
 </h3>
 
-<md-card *ngFor="let c of classes$ | async" >
+<md-card *ngFor="let c of classes" >
   <md-card-title>
     <md-icon>accessibility</md-icon>&nbsp;{{c.title}}
   </md-card-title>
@@ -15,6 +14,6 @@
   </md-card-content>
 
   <md-card-actions>
-    <button md-button color="accent" (click)="openClass(c)">EDIT</button>
+    <button md-button color="accent" (click)="edit(c)">EDIT</button>
   </md-card-actions>
 </md-card>

@@ -1,12 +1,8 @@
 <md-card>
-  <md-card-header>
-    <md-card-title><md-icon>accessibility</md-icon>&nbsp;Yoga Classes</md-card-title>
-    <md-card-subtitle>Beginner and Advanced</md-card-subtitle>
-  </md-card-header>
+  <md-card-title><md-icon>accessibility</md-icon>&nbsp;Yoga Classes</md-card-title>
+  <md-card-subtitle>Beginner and Advanced</md-card-subtitle>
   <md-card-content>
     We offer public and private classes.
   </md-card-content>
-  <md-card-actions>
-    <button md-button color="accent" routerLink="/classes/list">View Classes</button>
-  </md-card-actions>
 </md-card>
+<dd-classes-list [classes]="classes$ | async" (create)="create()" (edit)="edit($event)"></dd-classes-list>

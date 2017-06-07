@@ -1,5 +1,5 @@
 import * as _ from 'lodash';
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { createClass, IClass } from '../../../../../shared/classes';
 import { ClassesService } from '../classes.service';
@@ -28,7 +28,6 @@ export class ClassFormComponent implements OnInit {
     const id = route.snapshot.params['id'];
     if( id ){
       this.initClassEntry( parseInt( id, 10 ) );
-      console.log( "Route id:", id )
     }else{
       this.initClassEntry( -1 );
     }
@@ -54,14 +53,15 @@ export class ClassFormComponent implements OnInit {
       .filter( () => this.classForm.valid ) // only want to see changes on valid values
       .map( createClass )             // transform the formValue into an address
       .subscribe(
-        classEntry => this.classEntry = classEntry
+        classEntry => {
+          this.classEntry = classEntry;
+          this.classEntry.id = this.classId;
+        },
+        _.partial( handleError, 'ERR-CLS-300')
       );
 
   }
 
-  setClassEntry( classEntry: IClass ){
-    this.classEntry = classEntry;
-  }
 
   initClassEntry( id: number ){
     this.classEntry = {
@@ -81,12 +81,15 @@ export class ClassFormComponent implements OnInit {
             this.classEntry = classEntry;
             this.classForm.setValue( toFormValue(this.classEntry) );
           },
-          _.partial(handleError, 'ERR-302')
+          _.partial(handleError, 'ERR-CLS-301')
         );
     }
   }
+  goBack() {
+    this.router.navigate(['classes']);
+  }
   cancel() {
-    this.router.navigate(['classes', 'list' ]);
+    this.goBack();
   }
 
   save(){
@@ -96,19 +99,17 @@ export class ClassFormComponent implements OnInit {
       this.service.saveClass(this.classId, this.classEntry)
         .subscribe(
           classEntry => {
-            this.setClassEntry( classEntry );
-            this.router.navigate(['classes','list']);
+            this.goBack();
           },
-          _.partial(handleError, 'ERR-300')
+          _.partial(handleError, 'ERR-CLS-302')
         );
     }else{
       this.service.createClass( this.classEntry )
         .subscribe(
           classEntry => {
-            this.setClassEntry( classEntry );
-            this.router.navigate(['classes','list']);
+            this.goBack();
           },
-          _.partial( handleError, 'ERR-301' )
+          _.partial( handleError, 'ERR-CLS-303' )
         );
     }
   }

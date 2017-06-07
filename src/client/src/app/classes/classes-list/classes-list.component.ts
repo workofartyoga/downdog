@@ -1,8 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { IClass } from '../../../../../shared/classes';
-import { ClassesService } from '../classes.service';
-import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'dd-classes-list',
@@ -11,24 +8,26 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class ClassesListComponent implements OnInit {
 
-  classes$: Observable<IClass[]>;
+  @Input()
+  classes: IClass[];
 
-  constructor(
-    private service:ClassesService,
-    private router: Router,
-    private route: ActivatedRoute
-  ) { }
+  @Output('create')
+  onCreate = new EventEmitter();
+
+  @Output('edit')
+  onEdit = new EventEmitter();
+
+  constructor() { }
 
   ngOnInit() {
-    this.loadClasses();
   }
 
-  loadClasses(){
-    this.classes$ = this.service.loadAllClasses();
+  create() {
+    this.onCreate.emit();
   }
 
-  openClass( classEntry: IClass ){
-    this.router.navigate(['classes', classEntry.id ]);
+  edit( c: IClass ) {
+    this.onEdit.emit( c );
   }
 
 }

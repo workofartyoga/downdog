@@ -1,20 +1,26 @@
 
-<md-toolbar color="primary">
-  <span routerLink="">&nbsp;<md-icon>spa</md-icon>&nbsp;{{title}}</span>
-  <span class="fill-remaining-space"></span>
-  <!--<button md-button>Login</button>-->
-</md-toolbar>
-
 <md-sidenav-container>
-  <md-sidenav mode="side" opened="true">
-    <button md-button routerLink="home"><md-icon>home</md-icon>&nbsp;Home</button>
-    <button md-button routerLink="classes"><md-icon>accessibility</md-icon>&nbsp;Classes</button>
-    <!--<button md-button routerLink="schedule"><md-icon>event</md-icon>&nbsp;Schedule</button>-->
-    <button md-button routerLink="person"><md-icon>person</md-icon>&nbsp;People</button>
-
+  <md-sidenav #sidenav mode="over" >
+    <button md-button routerLink="home" (click)="sidenav.toggle()" ><md-icon>home</md-icon>&nbsp;Home</button>
+    <button md-button routerLink="classes" (click)="sidenav.toggle()" ><md-icon>accessibility</md-icon>&nbsp;Classes</button>
+    <button md-button routerLink="person" (click)="sidenav.toggle()" ><md-icon>person</md-icon>&nbsp;People</button>
+    <button md-button routerLink="address" (click)="sidenav.toggle()" ><md-icon>place</md-icon>&nbsp;Address</button>
   </md-sidenav>
-  <div class="my-content">
+
+  <md-toolbar color="primary" >
+    <button class="dd-icon-button" (click)="sidenav.toggle()" >
+      <i class="material-icons dd-toolbar-menu">menu</i>
+    </button>
+
+    <span routerLink="">&nbsp;<md-icon>spa</md-icon>&nbsp;{{title}}</span>
+    <span class="dd-toolbar-filler"></span>
+  </md-toolbar>
+
+  <div class="dd-content">
     <router-outlet></router-outlet>
+  </div>
+  <div class="dd-content">
+    <router-outlet name="action"></router-outlet>
   </div>
 </md-sidenav-container>
 

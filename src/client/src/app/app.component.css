@@ -1,16 +1,73 @@
-.fill-remaining-space{
+.dd-toolbar-filler{
   flex: 1 1 auto;
 }
 
 
-md-sidenav {
-  width: 125px;
-}
-
-
-md-sidenav-container, .my-content{
+md-sidenav-container, .app-content{
   margin: 0;
   min-height: 200px;
   height: 100%;
   width: 100%;
+}
+
+
+md-sidenav {
+  max-width: 150px;
+}
+
+.dd-content {
+  padding: 20px;
+}
+
+.dd-content md-card {
+  margin: 20px;
+}
+
+.dd-toolbar-menu {
+  padding: 0 14px 0 14px;
+  color: white;
+}
+
+.dd-icon-button {
+  box-shadow: none;
+  user-select: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  filter: none;
+  font-weight: normal;
+  height: auto;
+  line-height: inherit;
+  margin: 0;
+  min-width: 0;
+  padding: 0;
+  text-align: left;
+  text-decoration: none;
+}
+
+.dd-action {
+  display: inline-block;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}
+
+.dd-spinner {
+  height: 30px;
+  width: 30px;
+  display: inline-block;
+}
+
+.dd-input-icon {
+  font-size: 16px;
+}
+
+.dd-list {
+  border: 1px solid rgba(0,0,0,0.12);
+  width: 350px;
+  margin: 20px;
+}
+
+.dd-progress {
+  margin: 20px;
 }

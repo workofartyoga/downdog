@@ -29,4 +29,5 @@ export function initStaticFiles(app: Server) {
   app.get( /\/*.bundle.css/, restify.serveStatic( {
     directory: path.join( __dirname, 'client' )
   }));
+
 }

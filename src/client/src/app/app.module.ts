@@ -11,10 +11,12 @@ import { AddressListComponent } from './address/address-list/address-list.compon
 import { AddressService } from './address/address.service';
 import { MdCardModule, MdToolbarModule } from '@angular/material';
 import { MdSidenavModule } from '@angular/material';
+import { OverlayContainer } from '@angular/material';
 import { MaterialModule, MdNativeDateModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import 'hammerjs';
+
 import { PersonComponent } from './person/person/person.component';
 import { PersonListComponent } from './person/person-list/person-list.component';
 import { PersonFormComponent } from './person/person-form/person-form.component';
@@ -59,5 +61,8 @@ import { PersonDetailComponent } from './person/person-detail/person-detail.comp
   bootstrap: [AppComponent]
 })
 export class AppModule {
+  constructor( overlayContainer: OverlayContainer ){
+    overlayContainer.themeClass = 'down-dog-theme';
+  }
 }
 

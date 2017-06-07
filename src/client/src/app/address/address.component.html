@@ -1,6 +1,1 @@
-<div>
-  <dd-address-list [addresses]="addresses$ | async" (onSelect)="selected = $event"></dd-address-list>
-</div>
-<div >
-  <dd-address-form (saved)="onSaved()" ></dd-address-form>
-</div>
+<dd-address-list [addresses]="addresses$ | async" (edit)="edit($event)" (create)="create()"></dd-address-list>

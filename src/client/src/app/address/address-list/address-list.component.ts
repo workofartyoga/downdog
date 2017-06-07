@@ -11,10 +11,12 @@ export class AddressListComponent{
   @Input()
   addresses: IPostalAddress[];
 
-  @Output()
-  onSelect = new EventEmitter();
+  @Output('edit')
+  onEdit = new EventEmitter();
 
-  selected: IPostalAddress | null = null;
+  @Output('create')
+  onCreate = new EventEmitter();
+
   constructor() { }
 
   getAddress(addr: IPostalAddress) {
@@ -28,8 +30,11 @@ export class AddressListComponent{
     return template;
   }
 
-  select( address: IPostalAddress ) {
-    this.selected = address;
-    this.onSelect.emit( address );
+  edit( address: IPostalAddress ) {
+    this.onEdit.emit( address );
+  }
+
+  create() {
+    this.onCreate.emit();
   }
 }

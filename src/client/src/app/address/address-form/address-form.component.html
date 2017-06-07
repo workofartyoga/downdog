@@ -1,37 +1,37 @@
-
+<md-card>
 <form [formGroup]="paForm" autocomplete="off" novalidate >
   <fieldset>
     <legend>Address</legend>
-    <md-input-container class="address-full-width">
+    <md-input-container class="full-width" color="accent" >
       <input mdInput formControlName="label" placeholder="Home / Work...">
     </md-input-container>
 
     <p>
-    <md-input-container class="address-full-width">
+    <md-input-container class="full-width" color="accent" >
       <textarea mdInput formControlName="street1" placeholder="Address"></textarea>
     </md-input-container>
-    <md-input-container class="address-full-width">
+    <md-input-container class="full-width" color="accent" >
       <textarea mdInput formControlName="street2" placeholder="Address 2"></textarea>
     </md-input-container>
-    <md-input-container class="address-full-width">
+    <md-input-container class="full-width" color="accent" >
       <input mdInput formControlName="pobox" placeholder="Po Box">
     </md-input-container>
     </p>
 
-    <table class="address-full-width" cellspacing="0">
+    <table class="full-width" cellspacing="0">
       <tr>
         <td>
-          <md-input-container>
+          <md-input-container  color="accent" >
             <input mdInput formControlName="city" placeholder="City">
           </md-input-container>
         </td>
         <td>
-          <md-input-container>
+          <md-input-container color="accent" >
             <input mdInput formControlName="state" placeholder="State">
           </md-input-container>
         </td>
         <td>
-          <md-input-container>
+          <md-input-container color="accent" >
             <input mdInput formControlName="postalCode" placeholder="Postal Code" maxlength="5" #postalCode >
             <md-hint align="end">{{postalCode.value.length}} / 5</md-hint>
           </md-input-container>
@@ -39,11 +39,16 @@
       </tr>
     </table>
   </fieldset>
-  <button md-button type="submit" color="accent" (click)="add()" >Add</button>
+  <button md-button (click)="cancel()" >CANCEL</button>
+  <button md-button type="submit" color="accent" (click)="save()" >SAVE</button>
 </form>
+</md-card>
 
-
-<!--<div class="debug">-->
-  <!--<h3>Debug Address:</h3>-->
-  <!--{{ address | json }}-->
-<!--</div>-->
+<md-card>
+  <md-card-header>
+    <md-card-title>Debug Address:</md-card-title>
+  </md-card-header>
+  <md-card-content>
+    {{ address | json }}
+  </md-card-content>
+</md-card>

@@ -1,9 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { IPerson } from '../../../../../shared/person';
-import { PersonService } from '../person.service';
-import { handleError } from '../../util/handle-error';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'dd-person-list',
@@ -12,28 +8,33 @@ import { Observable } from 'rxjs/Observable';
 })
 export class PersonListComponent implements OnInit {
 
+  @Input( 'people' )
   people: IPerson[];
 
-  constructor(
-    private service: PersonService,
-    private router: Router
-  ) {
-    this.service.peopleGetAll()
-      .subscribe(
-        people => this.people = people,
-        err => handleError( 'ERR-PL-010', err )
-      );
-  }
+  @Output( 'details' )
+  onDetails = new EventEmitter();
+
+  @Output( 'edit' )
+  onEdit = new EventEmitter();
+
+  @Output( 'create' )
+  onCreate = new EventEmitter();
+
+  constructor() {}
 
   ngOnInit() {
   }
 
   select( person: IPerson ) {
-    this.router.navigate(['person', 'detail', person.id ]);
+    this.onDetails.emit( person );
   }
 
   edit( person: IPerson ) {
-    this.router.navigate(['person/edit', person.id ]);
+    this.onEdit.emit( person );
+  }
+
+  create() {
+    this.onCreate.emit();
   }
 
 }

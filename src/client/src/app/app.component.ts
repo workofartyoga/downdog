@@ -7,5 +7,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 
+  isDarkTheme: boolean = false;
   title = 'Work of Art Yoga';
 }

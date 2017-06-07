@@ -1,12 +1,12 @@
-.address-list {
-  margin-bottom: 20px;
-  margin-top: 20px;
+md-card {
+  display: inline-block;
+  margin-right: 10px;
+  margin-left: 10px;
 }
 
-.capitalize {
-  text-transform: capitalize;
+.subheader {
+  margin: 20px;
+  align-content: center;
 }
 
-.mat-list-icon {
-  color: rgba(0, 0, 0, 0.54);
-}
+

@@ -1,8 +1,10 @@
+<h3 class="subheader">Person List&nbsp;
+  <button class="menu-button" md-button color="accent" (click)="create()">CREATE</button>
+</h3>
+
 <md-card *ngFor="let person of people" (click)="select(person)" >
-  <md-card-header>
-    <md-card-title>{{person.firstName}} {{person.lastName}}</md-card-title>
-    <md-card-subtitle>{{person.alias}}</md-card-subtitle>
-  </md-card-header>
+  <md-card-title>{{person.firstName}} {{person.lastName}}</md-card-title>
+  <md-card-subtitle>{{person.alias}}</md-card-subtitle>
   <md-card-content>
     <p>{{person.bio}}</p>
     <p>{{person.email}}</p>

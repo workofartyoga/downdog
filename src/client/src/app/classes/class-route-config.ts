@@ -14,15 +14,11 @@ export const classRouteConfig: Routes = [
         component: ClassesComponent
       },
       {
-        path: 'list',
-        component: ClassesListComponent
-      },
-      {
         path: 'create',
         component: ClassFormComponent
       },
       {
-        path: ':id',
+        path: 'edit/:id',
         component: ClassFormComponent
       }
     ]

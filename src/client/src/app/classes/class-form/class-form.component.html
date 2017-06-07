@@ -1,37 +1,42 @@
-<form [formGroup]="classForm" #cf="ngForm" class="class-form" autocomplete="off" novalidate >
-  <fieldset>
-    <legend>Enter / Edit a class</legend>
+<md-card>
+  <form [formGroup]="classForm" #cf="ngForm" autocomplete="off" novalidate >
+    <fieldset>
+      <legend>Enter / Edit a class</legend>
 
-    <md-input-container class="classes-full-width">
-      <input mdInput formControlName="title" placeholder="Title">
-    </md-input-container>
+      <md-input-container class="three-quarter-width" color="accent" >
+        <input mdInput formControlName="title" placeholder="Title">
+      </md-input-container>
 
-    <md-input-container class="classes-full-width">
-      <input mdInput formControlName="audience" placeholder="Target audience">
-    </md-input-container>
+      <md-input-container class="one-quarter-width" color="accent">
+        <input mdInput formControlName="audience" placeholder="Audience">
+      </md-input-container>
 
-    <md-input-container class="classes-full-width">
-      <textarea mdInput formControlName="summary" placeholder="Summary"></textarea>
-    </md-input-container>
+      <md-input-container class="full-width" color="accent">
+        <textarea mdInput formControlName="summary" placeholder="Summary"></textarea>
+      </md-input-container>
 
-    <md-input-container class="classes-full-width">
-      <textarea mdInput formControlName="description" placeholder="Description" rows="5"></textarea>
-    </md-input-container>
+      <md-input-container class="full-width" color="accent">
+        <textarea mdInput formControlName="description" placeholder="Description" rows="5"></textarea>
+      </md-input-container>
 
-    <md-input-container class="classes-full-width">
-      <input mdInput formControlName="duration" placeholder="Duration (minutes)">
-    </md-input-container>
+      <md-input-container  class="one-quarter-width" color="accent">
+        <input mdInput formControlName="duration" placeholder="Duration (minutes)">
+      </md-input-container>
 
-    <md-input-container class="classes-full-width">
-      <input mdInput type="" formControlName="tags" placeholder="Tags ( yoga, asana, yin...)">
-    </md-input-container>
+      <md-input-container class="three-quarter-width" color="accent">
+        <input mdInput formControlName="tags" placeholder="Tags ( yoga, asana, yin...)">
+      </md-input-container>
 
-  </fieldset>
-  <button md-button (click)="cancel()">Cancel</button>
-  <button md-button color="accent" type="submit" (click)="save()" [disabled]="!cf.valid" >Save</button>
-</form>
-
-<!--<div class="debug">-->
-<!--<h3>Debug ClassEntry:</h3>-->
-<!--{{ classEntry | json }}-->
-<!--</div>-->
+    </fieldset>
+    <button md-button (click)="cancel()">CANCEL</button>
+    <button md-button color="accent" type="submit" (click)="save()" [disabled]="!cf.valid" >SAVE</button>
+  </form>
+</md-card>
+<md-card>
+  <md-card-header>
+    <md-card-title>Debug ClassEntry:</md-card-title>
+  </md-card-header>
+  <md-card-content >
+    {{ classEntry | json }}
+  </md-card-content>
+</md-card>

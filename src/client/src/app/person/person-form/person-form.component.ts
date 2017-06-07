@@ -13,20 +13,18 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class PersonFormComponent implements OnInit {
 
-  navBack = [ 'person', 'list' ];
-
   personForm: FormGroup;
   personId: number;
   person: IPerson;
 
   constructor(
-    private fb: FormBuilder,
-    private service: PersonService,
-    private router: Router,
-    private route: ActivatedRoute
+    private _fb: FormBuilder,
+    private _service: PersonService,
+    private _router: Router,
+    _route: ActivatedRoute
   ) {
     try{
-      const id = route.snapshot.params['id'];
+      const id = _route.snapshot.params['id'];
       if( id ) {
         this.setPerson(parseInt(id));
       }else{
@@ -34,7 +32,7 @@ export class PersonFormComponent implements OnInit {
       }
 
     }catch( err ){
-      handleError('ERR-052', err );
+      handleError('ERR-PERSON-052', err );
     }
   }
 
@@ -57,7 +55,7 @@ export class PersonFormComponent implements OnInit {
     };
 
     if( id !== -1 ) {
-      this.service.personFindById( this.personId )
+      this._service.personFindById( this.personId )
         .subscribe(
           person => {
             this.person = person;
@@ -70,7 +68,7 @@ export class PersonFormComponent implements OnInit {
   }
   initForm(){
 
-    this.personForm = this.fb.group( {
+    this.personForm = this._fb.group( {
       alias: [ this.person.alias ],
       bio: [ this.person.bio ],
       email: [this.person.email, [ Validators.required, Validators.email ] ],
@@ -93,24 +91,27 @@ export class PersonFormComponent implements OnInit {
 
   }
 
+  goBack() {
+    this._router.navigate( ['person']);
+  }
   save(){
     if( this.personId === -1 ){
-      this.service.personCreate( this.person )
+      this._service.personCreate( this.person )
         .subscribe(
-          person => this.router.navigate(this.navBack),
+          person => this.goBack(),
           _.partial( handleError, 'ERR-053' )
         )
     }else{
-      this.service.personUpdate( this.person.id, this.person )
+      this._service.personUpdate( this.person.id, this.person )
         .subscribe(
-          person => this.router.navigate(this.navBack),
+          person => this.goBack(),
           _.partial( handleError, 'ERR-054')
         )
     }
   }
 
   cancel(){
-    this.router.navigate(this.navBack);
+    this.goBack();
   }
 }
 
