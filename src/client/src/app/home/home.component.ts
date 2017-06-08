@@ -7,6 +7,9 @@ import { Component } from '@angular/core';
 })
 export class HomeComponent {
 
+  title = 'Work of Art Yoga';
+  subtitle = 'Home is where the soul resides.';
+
   constructor() { }
 
 }

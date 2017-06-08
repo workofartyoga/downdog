@@ -15,5 +15,6 @@ export function testAddress() {
     postalCode: 45230,
     state:      'OH',
     street1:    'Plainville St'
-  }]).catch( _.partial( handleModelError, 'TEST-ADDRESSES-SETUP'));
+  }])
+    .catch( _.partial( handleModelError, 'TEST-SETUP-ADDRESS'));
 }

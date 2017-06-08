@@ -14,7 +14,7 @@ import { testClasses } from './initialize/test-classes';
 
 dotenv.config();
 
-const log = createLogger( 'downdog-db' );
+const log = createLogger( 'down-dog-model' );
 
 const dbUrl = process.env.DATABASE_URL || 'postgres://postgres:postgres@localhost:5432/downdog-test';
 
@@ -26,15 +26,7 @@ export const Classes = initClasses( sequelize );
 
 People.hasMany( Addresses, { as: 'address' } );
 
-// if ( !dbUrl.endsWith('-test')) {
-//   sequelize.sync()
-//     .then( () => {
-//       log.debug( 'synced!');
-//     })
-//     .catch( _.partial( handleModelError, 'ERR-MODEL-SYNC') );
-// } else {
   log.info( 'begin db initialization');
-  // sequelize.sync({force: true, match: /-test})
   sequelize.sync({force: true})
     .then(() => {
       return testAddress();
@@ -49,5 +41,3 @@ People.hasMany( Addresses, { as: 'address' } );
       log.info('complete db initialization');
     })
     .catch( _.partial( handleModelError, 'ERR-MODEL-TEST-SYNC'));
-
-// }

@@ -1,5 +1,8 @@
 import * as bunyan from 'bunyan';
+import { LoggerOptions } from 'bunyan';
+import { createLoggerOptions } from './logger-options';
 
 export function createLogger( name: string ) {
-  return bunyan.createLogger({ name , stream: process.stdout });
+  const logOptions: LoggerOptions = createLoggerOptions( name );
+  return bunyan.createLogger(logOptions);
 }

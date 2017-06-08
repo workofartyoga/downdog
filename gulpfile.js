@@ -20,8 +20,6 @@ const extensions  = 'ts json';
 const watchSrc    = 'src';
 const bunyanPath  = './node_modules/bunyan/bin/bunyan';
 const bunyanArgs  = [ '--output', 'short', '--color' ];
-const startScript = buildPath + '/app.js';
-const distScript  = distPath + '/app.js';
 const delScript   = [ buildPath + '/**/*' ];
 const srcPath     = 'src';
 
@@ -67,11 +65,11 @@ gulp.task('test', ['build', 'lint'], function(){
 });
 
 
-gulp.task('dev', ['build', 'lint'], function() {
+gulp.task('dev-restify', ['build', 'lint'], function() {
   var bunyan
 
   const stream = nodemon({
-      script:   startScript,
+      script:   buildPath + '/app-restify.js',
       ext:      extensions,
       ignore:   ignorePaths,
       watch:    [ watchSrc ],
@@ -101,11 +99,45 @@ gulp.task('dev', ['build', 'lint'], function() {
     })
 });
 
-gulp.task('start', [ 'dist', 'lint'], function(){
+gulp.task('dev-express', ['build', 'lint'], function() {
   var bunyan
 
   const stream = nodemon({
-      script:   distScript,
+    script:   buildPath + '/app-express.js',
+    ext:      extensions,
+    ignore:   ignorePaths,
+    watch:    [ watchSrc ],
+    tasks:    [ 'build', 'lint' ],
+    stdout:   false,
+    readable: false
+  })
+    .on('readable', function() {
+
+      // free memory
+      bunyan && bunyan.kill();
+
+      bunyan = spawn(bunyanPath, bunyanArgs);
+
+      bunyan.stdout.pipe(process.stdout);
+      bunyan.stderr.pipe(process.stderr);
+
+      this.stdout.pipe(bunyan.stdin);
+      this.stderr.pipe(bunyan.stdin);
+    })
+
+    .on('restart', function(){ console.log( 'app restarted' );})
+
+    .on('crash', function(){
+      console.log( 'app crashed!' );
+      stream.emit( 'restart', 10); // restart the server in 10 seconds
+    })
+});
+
+gulp.task('start-express', [ 'dist', 'lint'], function(){
+  var bunyan
+
+  const stream = nodemon({
+      script:   distPath + "/app-express.js",
       ext:      extensions,
       ignore:   ignorePaths,
       watch:    [ watchSrc ],
@@ -113,6 +145,40 @@ gulp.task('start', [ 'dist', 'lint'], function(){
       stdout:   false,
       readable: false
     })
+    .on('readable', function() {
+
+      // free memory
+      bunyan && bunyan.kill();
+
+      bunyan = spawn(bunyanPath, bunyanArgs);
+
+      bunyan.stdout.pipe(process.stdout);
+      bunyan.stderr.pipe(process.stderr);
+
+      this.stdout.pipe(bunyan.stdin);
+      this.stderr.pipe(bunyan.stdin);
+    })
+
+    .on('restart', function(){ console.log( 'app restarted' );})
+
+    .on('crash', function(){
+      console.log( 'app crashed!' );
+      stream.emit( 'restart', 10); // restart the server in 10 seconds
+    })
+
+});
+gulp.task('start-restify', [ 'dist', 'lint'], function(){
+  var bunyan
+
+  const stream = nodemon({
+    script:   distPath + '/app-restify.js',
+    ext:      extensions,
+    ignore:   ignorePaths,
+    watch:    [ watchSrc ],
+    tasks:    [ 'dist', 'lint' ],
+    stdout:   false,
+    readable: false
+  })
     .on('readable', function() {
 
       // free memory

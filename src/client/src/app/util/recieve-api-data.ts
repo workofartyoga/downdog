@@ -1,10 +1,10 @@
 
 import { Response } from "@angular/http";
 
-export function receiveApiDatum( data: Response ): any {
+export function receiveApiObject(data: Response ): any {
   return data.json().data;
 }
 
-export function receiveApiData(data: Response ): any[] {
+export function receiveApiArray(data: Response ): any[] {
   return data.json().data;
 }

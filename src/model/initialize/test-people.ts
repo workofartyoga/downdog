@@ -17,5 +17,6 @@ export function testPeople() {
     lastName: 'Brenahan',
     phone: '888-555-1234',
     website: 'https://bud.brenahan.name'
-  }]).catch( _.partial( handleModelError, 'TEST-PEOPLE-SETUP'));
+  }])
+    .catch( _.partial( handleModelError, 'TEST-SETUP-PEOPLE'));
 }

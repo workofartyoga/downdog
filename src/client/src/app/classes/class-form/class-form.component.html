@@ -3,13 +3,15 @@
     <fieldset>
       <legend>Enter / Edit a class</legend>
 
-      <md-input-container class="three-quarter-width" color="accent" >
-        <input mdInput formControlName="title" placeholder="Title">
-      </md-input-container>
+      <p>
+        <md-input-container class="three-quarter-width" color="accent" >
+          <input mdInput formControlName="title" placeholder="Title">
+        </md-input-container>
 
-      <md-input-container class="one-quarter-width" color="accent">
-        <input mdInput formControlName="audience" placeholder="Audience">
-      </md-input-container>
+        <md-input-container class="one-quarter-width" color="accent">
+          <input mdInput formControlName="audience" placeholder="Audience">
+        </md-input-container>
+      </p>
 
       <md-input-container class="full-width" color="accent">
         <textarea mdInput formControlName="summary" placeholder="Summary"></textarea>
@@ -19,14 +21,15 @@
         <textarea mdInput formControlName="description" placeholder="Description" rows="5"></textarea>
       </md-input-container>
 
-      <md-input-container  class="one-quarter-width" color="accent">
-        <input mdInput formControlName="duration" placeholder="Duration (minutes)">
-      </md-input-container>
+      <p>
+        <md-input-container  class="one-quarter-width" color="accent">
+          <input mdInput formControlName="duration" placeholder="Duration (minutes)">
+        </md-input-container>
 
-      <md-input-container class="three-quarter-width" color="accent">
-        <input mdInput formControlName="tags" placeholder="Tags ( yoga, asana, yin...)">
-      </md-input-container>
-
+        <md-input-container class="three-quarter-width" color="accent">
+          <input mdInput formControlName="tags" placeholder="Tags ( yoga, asana, yin...)">
+        </md-input-container>
+      </p>
     </fieldset>
     <button md-button (click)="cancel()">CANCEL</button>
     <button md-button color="accent" (click)="save()" [disabled]="!cf.valid" >SAVE</button>

@@ -28,5 +28,6 @@ export function testClasses() {
       label: "",
       summary: "A flowing and energized vibe to guide you home.",
       tags: "yoga, asana, warrior, child, downdog",
-    }]).catch(_.partial(handleModelError, "TEST-CLASSES-SETUP"));
+    }])
+    .catch(_.partial(handleModelError, "TEST-SETUP-CLASSES"));
 }
