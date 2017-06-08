@@ -22,6 +22,6 @@ NOTE: there is a yarn.lock file - that should ensure the correct versions.
 ## Browser
 I tested on Safari, Chrome and Canary on darwin x64 os
 
-`open http://localhost:4200` - is where the client will be hosted
+`open http://localhost:3000` - is where the client will be hosted
 
 NOTE: the client is currently configured to proxy to the restify Api.
