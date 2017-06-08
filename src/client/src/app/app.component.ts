@@ -1,4 +1,8 @@
 import { Component } from '@angular/core';
+import { Event, Router } from '@angular/router';
+import 'rxjs/add/operator/groupBy';
+import 'rxjs/add/operator/mergeAll';
+import { collectAllEventsForNavigation, outputEvents } from './util/router-events-helper';
 
 @Component({
   selector: 'dd-root',
@@ -7,4 +11,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = "Work of Art Yoga";
+
+  constructor( router: Router ){
+    outputEvents( router );
+  }
 }
+
