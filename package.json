@@ -17,7 +17,6 @@
     "start:dev": "concurrently \"npm run start:ng\" \"npm run start:api\" ",
     "start:ng": "ng serve --proxy-config src/client/proxy.conf.json",
     "start:api": "npm run gulp dev-restify",
-    "start:api-exp": "npm run gulp dev-express",
     "test": "ng test",
     "test:api": "npm run gulp test",
     "ts:api": "./node_modules/.bin/ts-node src/app-restify.ts",
