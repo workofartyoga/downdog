@@ -55,6 +55,9 @@
   margin-bottom: 5px;
 }
 
+.field-error-message {
+  color: warn;
+}
 
 .disable-text-selection {
   -webkit-touch-callout: none;

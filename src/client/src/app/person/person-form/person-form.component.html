@@ -6,11 +6,13 @@
         <td>
           <md-input-container class="full-width" color="accent" >
             <input mdInput formControlName="firstName" placeholder="First" >
+            <md-error>field is mandatory</md-error>
           </md-input-container>
         </td>
         <td>
           <md-input-container class="full-width" color="accent" >
             <input mdInput formControlName="lastName" placeholder="Last" >
+            <md-error>field is mandatory</md-error>
           </md-input-container>
         </td>
       </tr>
@@ -21,7 +23,8 @@
     </md-input-container>
 
     <md-input-container class="full-width" color="accent" >
-      <input mdInput formControlName="email" placeholder="Email">
+      <input mdInput type="email" formControlName="email" placeholder="Email">
+      <md-error>field is mandatory</md-error>
     </md-input-container>
 
     <md-input-container class="full-width" color="accent" >
